@@ -1,15 +1,20 @@
-import { Box, Image, Text, HStack, VStack } from "@gluestack-ui/themed";
+import { Box, Image, Text, Button, HStack, VStack } from "@gluestack-ui/themed";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { imgURL } from "../api/Api";
 import { useNavigation } from "@react-navigation/native";
+import SingleViewScreen from "../screens/SingleViewScreen";
 
 const CardSingle = ({ item, type }) => {
   const navigation = useNavigation();
 
-  const handleNavigation = () => {
-    console.log("handleNavigation function called");
-
-    navigation.navigate("Media", { itemId: item.id, type: item.media_type ? item.media_type : type });
+  const navigateToSingleView = () => {
+    navigation.navigate("SingleView", {
+      title: item.title,
+      popularity: item.popularity,
+      releaseDate: item.release_date,
+      description: item.overview,
+      posterUrl: imgURL(item.backdrop_path),
+    });
   };
   return (
     <Box py="$2" flexWrap="nowrap">
@@ -26,8 +31,8 @@ const CardSingle = ({ item, type }) => {
           {item.title ? <Text style={styles.nameText}>{item.title}</Text> : <Text style={styles.nameText}>{item.name}</Text>}
           <Text>Popularity: {item.popularity}</Text>
           {item.release_date ? <Text>Realease date: {item.release_date}</Text> : <Text>Realease date: {item.first_air_date}</Text>}
-          <TouchableOpacity style={styles.moreDetailsbutton} underlayColor="#00ced1" onPress={handleNavigation}>
-            <Text style={styles.detailsText}>More Details</Text>
+          <TouchableOpacity style={styles.moreDetailsButton} onPress={navigateToSingleView}>
+            <Text style={styles.buttonText}>More Details</Text>
           </TouchableOpacity>
         </VStack>
       </HStack>
@@ -36,24 +41,22 @@ const CardSingle = ({ item, type }) => {
 };
 
 const styles = StyleSheet.create({
-  moreDetailsbutton: {
+  moreDetailsButton: {
     backgroundColor: "#00ced1",
-    borderRadius: 4,
+    borderRadius: 10,
     width: 200,
     height: 40,
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonText: {
+    color: "#FFF",
+    fontWeight: "bold",
+  },
   nameText: {
     fontSize: "18",
     fontWeight: "bold",
     width: 200,
-  },
-  detailsText: {
-    color: "#fff",
-    textAlign: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
   },
 });
 

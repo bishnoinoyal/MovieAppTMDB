@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainScreen from "../screens/MainScreen";
 import { dataDetails } from "../api/Api";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import SingleViewScreen from "../screens/SingleViewScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -60,7 +61,7 @@ const StackNavigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="main"
+          name="mainScreen"
           component={MainScreen}
           options={{
             title: "Movies App",
@@ -72,9 +73,7 @@ const StackNavigation = () => {
             },
           }}
         />
-        <Stack.Screen name="Media" options={{ title: "Media Screen" }}>
-          {(props) => <MediaScreenContents {...props} />}
-        </Stack.Screen>
+        <Stack.Screen name="SingleView" component={SingleViewScreen} />
       </Stack.Navigator>
 
       <Actionsheet isOpen={showActionsheet} onClose={handleClose}>

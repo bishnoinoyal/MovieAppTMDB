@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Dimensions } from "react-native";
-import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator, ActionsheetItem, ActionsheetIcon, ActionsheetItemText } from "@gluestack-ui/themed";
+import { Actionsheet, ActionsheetBackdrop, ActionsheetContent, ActionsheetDragIndicatorWrapper, ActionsheetDragIndicator, ActionsheetItem, ActionsheetItemText } from "@gluestack-ui/themed";
 import { Icon, CheckIcon } from "@gluestack-ui/themed";
 
 const menuBottom = ({ handleClose, showActionsheet, filters, onSelectFilter, selectedFilter }) => {

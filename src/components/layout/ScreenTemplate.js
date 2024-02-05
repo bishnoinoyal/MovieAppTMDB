@@ -38,7 +38,7 @@ const ScreenTemplate = ({ platform, filters }) => {
 
   return (
     <View>
-      <View style={styles.SearchFun}>
+      <View style={styles.searchFun}>
         <SearchFun handleClose={handleClose} showSearchButton={false} selectedFilter={selectedFilter} />
       </View>
       <MenuBottom handleClose={handleClose} showActionsheet={showActionsheet} filters={filters} onSelectFilter={handleFilterSelection} selectedFilter={selectedFilter} />
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-  SearchFun: {
+  searchFun: {
     flexDirection: "row",
     justifyContent: "center",
     marginHorizontal: 70,
